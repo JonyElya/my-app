@@ -1,0 +1,18 @@
+.footer {
+  grid-area: footer;
+  background-image: linear-gradient(
+    to top right,
+    rgb(102, 115, 255),
+    rgb(95, 123, 243),
+    rgb(87, 131, 231),
+    rgb(80, 138, 219),
+    rgb(73, 146, 207),
+    rgb(66, 154, 195),
+    rgb(58, 162, 183),
+    rgb(51, 170, 171),
+    rgb(44, 178, 159),
+    rgb(37, 185, 147),
+    rgb(29, 193, 135),
+    rgb(22, 201, 123)
+  );
+}

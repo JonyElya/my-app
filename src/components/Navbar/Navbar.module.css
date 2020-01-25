@@ -1,0 +1,22 @@
+.navbar {
+  grid-area: nav;
+  padding: 15px;
+  border-right-color: #838dfc;
+  border-right-style: solid;
+  border-right-width: 2px;
+}
+.item a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  background: #838dfc;
+}
+.item {
+  padding: 2px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.active {
+  color: white;
+}
