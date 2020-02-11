@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Users.module.css";
 import { NavLink } from "react-router-dom";
-import Lines from "react-preloaders/lib/Lines/Lines";
+import { usersAPI } from "../../api/api";
 
 const Users = props => {
   let pagesCount = Math.ceil(props.totalCount / props.pageSize);
@@ -37,7 +37,11 @@ const Users = props => {
               {u.followed ? (
                 <button
                   onClick={() => {
-                    props.unfollow(u.id);
+                    usersAPI.unfollow(u.id).then(data => {
+                      if (data.resultCode === 0) {
+                        props.unfollow(u.id);
+                      }
+                    });
                   }}
                 >
                   Unfollow
@@ -45,7 +49,11 @@ const Users = props => {
               ) : (
                 <button
                   onClick={() => {
-                    props.follow(u.id);
+                    usersAPI.follow(u.id).then(data => {
+                      if (data.resultCode === 0) {
+                        props.follow(u.id);
+                      }
+                    });
                   }}
                 >
                   Follow

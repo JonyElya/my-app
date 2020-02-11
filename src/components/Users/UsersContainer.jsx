@@ -1,7 +1,6 @@
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import * as axios from "axios";
 import {
   follow,
   unfollow,
@@ -11,28 +10,21 @@ import {
   setLoad
 } from "../../redux/UsersReducer";
 import { Lines } from "react-preloaders";
+import { usersAPI } from "../../api/api";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?&page=${this.props.currentPage}&count=${this.props.pageSize}`
-      )
-      .then(response => {
-        this.props.setLoad(false);
-        this.props.setUsers(response.data.items);
-        this.props.setTotalUsersCount(response.data.totalCount);
-      });
+    usersAPI.getUser(this.props.currentPage, this.props.pageSize).then(data => {
+      this.props.setLoad(false);
+      this.props.setUsers(data.items);
+      this.props.setTotalUsersCount(data.totalCount);
+    });
   }
   onPageChanged = p => {
     this.props.setCurrentPage(p);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`
-      )
-      .then(response => {
-        this.props.setUsers(response.data.items);
-      });
+    usersAPI.getUser(p, this.props.pageSize).then(data => {
+      this.props.setUsers(data.items);
+    });
   };
   render() {
     return (
