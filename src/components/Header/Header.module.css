@@ -19,3 +19,9 @@
 .header img {
   width: 60px;
 }
+.Login_block {
+  float: right;
+}
+.Login_block a {
+  color: white;
+}

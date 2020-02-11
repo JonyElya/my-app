@@ -1,7 +1,11 @@
 import React from "react";
 import style from "./ProfileInfo.module.css";
+import Lines from "react-preloaders/lib/Lines/Lines";
 
-const ProfileInfo = () => {
+const ProfileInfo = props => {
+  if (!props.profile) {
+    return <Lines time={0} />;
+  }
   return (
     <div>
       <div className={style.description_image}>
@@ -10,7 +14,21 @@ const ProfileInfo = () => {
           alt=""
         />
       </div>
-      <div className={style.description_block}>ava</div>
+      <div className={style.description_block}>
+        <div>
+          <img src={props.profile.photos.large} />
+        </div>
+        <div className="">{props.profile.aboutMe}</div>
+        <div className="">{props.profile.fullName}</div>
+        {/* {props.profile.profile.map(i => (
+          <div className="">
+            <div className="">{i.email}</div>
+            <div className="">{i.phone}</div>
+            <div className="">{i.userId}</div>
+            <div className="">{i.id}</div>
+          </div>
+        ))} */}
+      </div>
     </div>
   );
 };
